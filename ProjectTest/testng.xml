@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="NotePad Android" verbose="1" >
+  <test name="Sanity" >
+     
+     <parameter name="platform" value="Android"/>
+     <parameter name="deviceName" value="BX903K4MC3"/>
+           
+    <classes>
+      <class name="com\tanushka\testsandroid\sanity\Sanity_001.java"/>
+      
+    </classes>
+ </test>
+ 
+</suite>
