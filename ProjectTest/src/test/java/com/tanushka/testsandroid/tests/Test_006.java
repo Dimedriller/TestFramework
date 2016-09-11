@@ -1,4 +1,4 @@
-package com.tanushka.testsandroid.sanity;
+package com.tanushka.testsandroid.tests;
 
 import com.tanushka.framework.platform.android.BaseAndroidTest;
 import com.tanushka.framework.platform.TestException;

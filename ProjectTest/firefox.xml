@@ -7,7 +7,7 @@
 
     <test name="FirefoxTest">
         <classes>
-            <class name="com.tanushka.testweb.LogInWithDefaultUserFF" />
+            <class name="com.tanushka.testweb.tests.LogInWithDefaultUserFF" />
         </classes>
     </test>
 

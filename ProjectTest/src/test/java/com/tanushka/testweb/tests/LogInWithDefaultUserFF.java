@@ -1,19 +1,20 @@
-package com.tanushka.testweb;
+package com.tanushka.testweb.tests;
 
 import com.tanushka.framework.platform.web.BaseWebTest;
 import com.tanushka.framework.platform.TestException;
 import com.tanushka.framework.platform.ViewElement;
+import com.tanushka.testweb.locators.LoginForm;
 
 
 /**
- * Created by Home on 06.09.2016.
+ * Created by Home on 31.07.2016.
  */
-public class LogInWithDefaultUserChrome extends BaseWebTest{
+
+public class LogInWithDefaultUserFF extends BaseWebTest{
     @Override
     protected void executeSetup() {
-
-
-
+        String baseUrl = "http://demo.borland.com/InsuranceWebExtJS/index.jsf";
+        getDevice().mWebDriver.get(baseUrl);
     }
 
     @Override
@@ -22,22 +23,22 @@ public class LogInWithDefaultUserChrome extends BaseWebTest{
         logStep("Step 1:Enter email john.smith@gmail.com in login-form:email<br>"+
                 "Expected Result: Email john.smith@gmail.com is introduced<br>");
 
-        ViewElement loginField = getDevice().findElementById("login-form:email");
+        ViewElement loginField = LoginForm.getUserName(getDevice());
         loginField.sendKeys("john.smith@gmail.com");
 
         logStep("Step 2:Enter password john in login-form:password<br>"+
                 "Expected Result: Password john is introduced<br>");
 
-        ViewElement passwordField = getDevice().findElementById("login-form:password");
+        ViewElement passwordField = LoginForm.getPassword(getDevice());
         passwordField.sendKeys("john");
 
         logStep("Step 3:Click LogIn button<br>"+
                 "Expected Result: Notice Logged in as John Smith is displayed <br>");
 
-        ViewElement loginBtn = getDevice().findElementById("login-form:login");
+        ViewElement loginBtn = LoginForm.getLoginButton(getDevice());
         loginBtn.click();
 
-        getDevice().findElementByXPath(".//*[@id='logout-form']/div[2]/label[contains(text(), 'John')]");
+        LoginForm.getLogoutName(getDevice(), "John");
 
       /*  try {
             getDevice().findElementById("logocont");

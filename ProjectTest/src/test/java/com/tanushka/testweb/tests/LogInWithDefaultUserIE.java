@@ -1,4 +1,4 @@
-package com.tanushka.testweb;
+package com.tanushka.testweb.tests;
 
 import com.tanushka.framework.platform.web.BaseWebTest;
 import com.tanushka.framework.platform.TestException;
@@ -9,11 +9,14 @@ import com.tanushka.framework.platform.ViewElement;
  * Created by Home on 31.07.2016.
  */
 
-public class LogInWithDefaultUserFF extends BaseWebTest{
+public class LogInWithDefaultUserIE extends BaseWebTest{
     @Override
     protected void executeSetup() {
+
+
         String baseUrl = "http://demo.borland.com/InsuranceWebExtJS/index.jsf";
         getDevice().mWebDriver.get(baseUrl);
+
     }
 
     @Override
@@ -49,4 +52,6 @@ public class LogInWithDefaultUserFF extends BaseWebTest{
 
     }
 }
+
+
 
