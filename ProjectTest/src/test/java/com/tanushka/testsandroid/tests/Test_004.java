@@ -1,5 +1,6 @@
 package com.tanushka.testsandroid.tests;
 
+import com.tanushka.framework.platform.android.AndroidDevice;
 import com.tanushka.framework.platform.android.BaseAndroidTest;
 import com.tanushka.framework.platform.TestException;
 import com.tanushka.framework.platform.ViewElement;
@@ -24,18 +25,18 @@ import com.tanushka.framework.platform.ViewElement;
 
 public class Test_004 extends BaseAndroidTest {
     @Override
-    protected void executeSetup() {
+    protected void executeSetup(AndroidDevice device) {
 
     }
 
     @Override
-    protected void executeTest() throws TestException {
+    protected void executeTest(AndroidDevice device) throws TestException {
 
         logStep("Step 1: Open Fast Notepad. Open Settings panel by swiping.<br>" +
                 "Expected Result: Panel navigation_drawer is opened.<br>");
 
-        getDevice().swipeByCoordinates(2, 500, 700, 500);
-        ViewElement navigationDrawer = getDevice().findElementById("com.taxaly.noteme.v2:id/navigation_drawer");
+        device.swipeByCoordinates(2, 500, 700, 500);
+        ViewElement navigationDrawer = device.findElementById("com.taxaly.noteme.v2:id/navigation_drawer");
 
         logStep("Step 2:Check all elements: Navigation_drawer element with text Fast NotePad, navigation_drawer_list with 4 elements:\n " +
                 "My notes, Trash bin, Settings, About.<br>" +
@@ -54,9 +55,9 @@ public class Test_004 extends BaseAndroidTest {
         logStep("Step 3: Close Settings panel by swiping.<br>" +
                 " Expected result: Panel are closed.<br>");
 
-        getDevice().swipeByCoordinates(700, 900, 50, 900);
+        device.swipeByCoordinates(700, 900, 50, 900);
         try {
-            getDevice().findElementById("com.taxaly.noteme.v2:id/navigation_drawer");
+            device.findElementById("com.taxaly.noteme.v2:id/navigation_drawer");
             logProblem("Settings panel is not closed");
         } catch (TestException e) {
             // No actions

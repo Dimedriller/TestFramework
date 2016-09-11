@@ -1,5 +1,6 @@
 package com.tanushka.testsandroid.tests;
 
+import com.tanushka.framework.platform.android.AndroidDevice;
 import com.tanushka.framework.platform.android.BaseAndroidTest;
 import com.tanushka.framework.platform.TestException;
 import com.tanushka.framework.platform.ViewElement;
@@ -19,31 +20,31 @@ import com.tanushka.framework.platform.ViewElement;
 
 public class Test_006 extends BaseAndroidTest {
     @Override
-    protected void executeSetup() throws TestException {
+    protected void executeSetup(AndroidDevice device) throws TestException {
         logStep("Setup: Create 10 new notes.<br>" +
                 " Expected result: 20 new notes are created.<br>");
 
         for(int size = 0; size < 10; size++) {
-            getDevice().findElementById("com.taxaly.noteme.v2:id/content_addbtn").click();
-            getDevice().findElementByName("Fast Notepad");
-            ViewElement editorElement = getDevice().findElementById("com.taxaly.noteme.v2:id/scrollView");
+            device.findElementById("com.taxaly.noteme.v2:id/content_addbtn").click();
+            device.findElementByName("Fast Notepad");
+            ViewElement editorElement = device.findElementById("com.taxaly.noteme.v2:id/scrollView");
             editorElement.sendKeys("Fast NotePad" + size);
 
-            getDevice().findElementById("com.taxaly.noteme.v2:id/actionbar_back").click();
-            ViewElement listView = getDevice().findElementById("com.taxaly.noteme.v2:id/fragment_main_list");
+            device.findElementById("com.taxaly.noteme.v2:id/actionbar_back").click();
+            ViewElement listView = device.findElementById("com.taxaly.noteme.v2:id/fragment_main_list");
             listView.findElementByName("Fast NotePad"+size);
         }
     }
 
     @Override
-    protected void executeTest() throws TestException {
+    protected void executeTest(AndroidDevice device) throws TestException {
 
         logStep("Step 1: Scroll to Fast NotePad5 and delete.<br>" +
                 " Expected result: Fast NotePad5 are deleted.<br>");
 
-        ViewElement createdNote = getDevice().scrollForElementByName("Fast NotePad5");
+        ViewElement createdNote = device.scrollForElementByName("Fast NotePad5");
         createdNote.longPress();
-        ViewElement selectDialogListView = getDevice().findElementById("android:id/select_dialog_listview");
+        ViewElement selectDialogListView = device.findElementById("android:id/select_dialog_listview");
         selectDialogListView.findElementByName("Delete").click();
         try {
             createdNote.findElementByName("Fast NotePad5");

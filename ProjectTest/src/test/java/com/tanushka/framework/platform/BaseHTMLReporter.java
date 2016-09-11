@@ -1,7 +1,5 @@
-package com.tanushka.framework.reporting;
+package com.tanushka.framework.platform;
 
-import com.tanushka.framework.platform.BaseTest;
-import com.tanushka.framework.platform.Device;
 import org.apache.velocity.VelocityContext;
 import org.testng.ITestContext;
 import org.testng.ITestListener;

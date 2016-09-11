@@ -1,5 +1,6 @@
 package com.tanushka.testsandroid.tests;
 
+import com.tanushka.framework.platform.android.AndroidDevice;
 import com.tanushka.framework.platform.android.BaseAndroidTest;
 import com.tanushka.framework.platform.TestException;
 import com.tanushka.framework.platform.ViewElement;
@@ -36,18 +37,18 @@ import com.tanushka.framework.platform.ViewElement;
  */
 public class Test_001 extends BaseAndroidTest {
     @Override
-    protected void executeSetup() {
+    protected void executeSetup(AndroidDevice device) {
 
     }
 
     @Override
-    protected void executeTest() throws TestException {
+    protected void executeTest(AndroidDevice device) throws TestException {
 
 
         logStep("Step 1: Open Fast Notepad. Find RelativeLayout widget.<br>" +
                 "Expected Result: Widget RelativeLayout is found.<br>");
 
-        ViewElement relativeLayoutElement= getDevice().findElementByClassName("android.widget.RelativeLayout");
+        ViewElement relativeLayoutElement= device.findElementByClassName("android.widget.RelativeLayout");
 
         logStep("Step 2: Find actionbar_toggle element.<br>" +
                 "Expected Result: Element actionbar_toggle is found.<br>");
@@ -84,9 +85,9 @@ public class Test_001 extends BaseAndroidTest {
 
         //getPhone().back();
        // getPhone().findElementById("com.taxaly.noteme.v2:id/actionbar_menu").click();
-        getDevice().back();
+        device.back();
 
-        getDevice().findElementByClassName("android.widget.RelativeLayout");
+        device.findElementByClassName("android.widget.RelativeLayout");
         //getPhone().findElementById("com.taxaly.noteme.v2:id/actionbar_toggle");
         relativeLayoutElement.findElementById("com.taxaly.noteme.v2:id/actionbar_toggle");
        // getPhone().findElementById("com.taxaly.noteme.v2:id/actionbar_menu").click();

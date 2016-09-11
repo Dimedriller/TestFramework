@@ -30,7 +30,7 @@
                             <property>
                                 <name>listener</name>
                                 <value>
-                                    com.tanushka.framework.reporting.BaseHTMLReporter
+                                    com.tanushka.framework.platform.BaseHTMLReporter
                                 </value>
                             </property>
                         </properties>

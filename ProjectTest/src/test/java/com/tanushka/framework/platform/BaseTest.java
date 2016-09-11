@@ -1,13 +1,9 @@
 package com.tanushka.framework.platform;
 
-import com.tanushka.framework.reporting.BaseHTMLReporter;
-import org.testng.Reporter;
 import org.testng.annotations.*;
 import org.testng.asserts.Assertion;
 
 import java.net.MalformedURLException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Listeners(BaseHTMLReporter.class)
 public abstract class BaseTest<D extends Device> {
@@ -16,21 +12,21 @@ public abstract class BaseTest<D extends Device> {
 
     //@Parameters({"platform","deviceName"})
 
-    protected abstract void executeSetup() throws TestException;
+    protected abstract void executeSetup(D device) throws TestException;
 
     @BeforeClass
     public void setUp() throws MalformedURLException, TestException {
         mDevice = initializeDevice();
 
-        executeSetup();
+        executeSetup(mDevice);
     }
 
-    protected abstract void executeTest() throws TestException;
+    protected abstract void executeTest(D device) throws TestException;
 
     @Test
     public void test() {
         try {
-            executeTest();
+            executeTest(mDevice);
         } catch (TestException e) {
             logProblem(e.getMessage());
         }
@@ -54,7 +50,7 @@ public abstract class BaseTest<D extends Device> {
         mEventLogger.logStep(message);
     }
 
-    public D getDevice() {
+    Device getDevice() {
         return mDevice;
     }
 

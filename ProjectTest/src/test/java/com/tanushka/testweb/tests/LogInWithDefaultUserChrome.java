@@ -3,41 +3,20 @@ package com.tanushka.testweb.tests;
 import com.tanushka.framework.platform.web.BaseWebTest;
 import com.tanushka.framework.platform.TestException;
 import com.tanushka.framework.platform.ViewElement;
+import com.tanushka.framework.platform.web.WebDevice;
+import com.tanushka.testweb.helpers.LoginHelper;
 
-
-/**
- * Created by Home on 06.09.2016.
- */
 public class LogInWithDefaultUserChrome extends BaseWebTest{
+    private final LoginHelper mLoginHelper = new LoginHelper(this);
+
     @Override
-    protected void executeSetup() {
-
-
-
+    protected void executeSetup(WebDevice device) {
+        device.loadPage("http://demo.borland.com/InsuranceWebExtJS/index.jsf");
     }
 
     @Override
-    protected void executeTest() throws TestException {
-
-        logStep("Step 1:Enter email john.smith@gmail.com in login-form:email<br>"+
-                "Expected Result: Email john.smith@gmail.com is introduced<br>");
-
-        ViewElement loginField = getDevice().findElementById("login-form:email");
-        loginField.sendKeys("john.smith@gmail.com");
-
-        logStep("Step 2:Enter password john in login-form:password<br>"+
-                "Expected Result: Password john is introduced<br>");
-
-        ViewElement passwordField = getDevice().findElementById("login-form:password");
-        passwordField.sendKeys("john");
-
-        logStep("Step 3:Click LogIn button<br>"+
-                "Expected Result: Notice Logged in as John Smith is displayed <br>");
-
-        ViewElement loginBtn = getDevice().findElementById("login-form:login");
-        loginBtn.click();
-
-        getDevice().findElementByXPath(".//*[@id='logout-form']/div[2]/label[contains(text(), 'John')]");
+    protected void executeTest(WebDevice device) throws TestException {
+        mLoginHelper.login(device);
 
       /*  try {
             getDevice().findElementById("logocont");

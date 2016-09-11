@@ -1,5 +1,6 @@
 package com.tanushka.testsandroid.tests;
 
+import com.tanushka.framework.platform.android.AndroidDevice;
 import com.tanushka.framework.platform.android.BaseAndroidTest;
 import com.tanushka.framework.platform.TestException;
 import com.tanushka.framework.platform.ViewElement;
@@ -29,18 +30,18 @@ import com.tanushka.framework.platform.ViewElement;
 
 public class Test_005 extends BaseAndroidTest {
     @Override
-    protected void executeSetup() {
+    protected void executeSetup(AndroidDevice device) {
 
     }
 
     @Override
-    protected void executeTest() throws TestException {
+    protected void executeTest(AndroidDevice device) throws TestException {
 
         logStep("Step 1: Open NotePad. Click on actionbar_menu.<br>" +
                 " Expected result: Dialog with actions are displayed.<br>");
 
-        getDevice().findElementById("com.taxaly.noteme.v2:id/actionbar_menu").click();
-        ViewElement dialogListView = getDevice().findElementById("android:id/select_dialog_listview");
+        device.findElementById("com.taxaly.noteme.v2:id/actionbar_menu").click();
+        ViewElement dialogListView = device.findElementById("android:id/select_dialog_listview");
 
         logStep("Step 2: Verify all element in dialog: Order by date, Order by title, Create folder. And Cancel button.<br>" +
                 " Expected result: All elements are present in the dialog.<br>");
@@ -49,7 +50,7 @@ public class Test_005 extends BaseAndroidTest {
         dialogListView.findElementByName("Order by title");
         dialogListView.findElementByName("Create folder");
 
-        getDevice().findElementById("android:id/button3");
+        device.findElementById("android:id/button3");
 
         logStep("Step 3: Click Create folder.<br>" +
                 " Expected result: Dialog for create a new folder is displayed.<br>");
@@ -58,17 +59,17 @@ public class Test_005 extends BaseAndroidTest {
 
 
         //Check all elements in Create dialog
-        ViewElement nameFolderField = getDevice().findElementByName("Enter folder name");
-        getDevice().findElementByName("Fast folder");
+        ViewElement nameFolderField = device.findElementByName("Enter folder name");
+        device.findElementByName("Fast folder");
 
-        getDevice().findElementByName("Cancel");
-        getDevice().findElementByName("OK");
+        device.findElementByName("Cancel");
+        device.findElementByName("OK");
 
         logStep("Step 4: Print Test. Click OK.<br>" +
                 " Expected result: Folder is created.<br>");
 
         nameFolderField.sendKeys("Test");
-        getDevice().findElementByName("OK").click();
+        device.findElementByName("OK").click();
 
         try {
             Thread.sleep(1000);
@@ -81,25 +82,10 @@ public class Test_005 extends BaseAndroidTest {
         logStep("Step 5: Open Settings panel by swiping. And verify that Fast folder element is in the list.<br>" +
                 " Expected result: Fast folder element is present.<br>");
 
-        getDevice().swipeByCoordinates(2, 500, 700, 500);
-        ViewElement navigationDrawer = getDevice().findElementById("com.taxaly.noteme.v2:id/navigation_drawer");
+        device.swipeByCoordinates(2, 500, 700, 500);
+        ViewElement navigationDrawer = device.findElementById("com.taxaly.noteme.v2:id/navigation_drawer");
 
         navigationDrawer.findElementByName("Test").click();
-        getDevice().findElementByName("Test");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        device.findElementByName("Test");
     }
 }
