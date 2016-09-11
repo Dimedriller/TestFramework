@@ -1,4 +1,4 @@
-package com.tanushka.phonetest;
+package com.tanushka.framework.platform;
 
 public class TestException extends Exception {
     public TestException(String message) {

@@ -1,7 +1,7 @@
-package com.tanushka.reporting;
+package com.tanushka.framework.reporting;
 
-import com.tanushka.phonetest.BaseTest;
-import com.tanushka.phonetest.Device;
+import com.tanushka.framework.platform.BaseTest;
+import com.tanushka.framework.platform.Device;
 import org.apache.velocity.VelocityContext;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -19,7 +19,7 @@ import java.util.Date;
  * Time: 6:49 PM
  */
 public class BaseHTMLReporter extends HTMLReporter implements ITestListener {
-    public static final String DRIVER_ATTRIBUTE = "driver";
+    public static final String DRIVER_ATTRIBUTE = "framework";
     private static final String UTILS_KEY = "utils";
     private static final String DATE = "date";
     private static final String TEST_CASES_INFO = "testCasesInfo";

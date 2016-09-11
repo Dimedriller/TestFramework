@@ -1,6 +1,6 @@
-package com.tanushka.phonetest;
+package com.tanushka.framework.platform;
 
-import com.tanushka.reporting.BaseHTMLReporter;
+import com.tanushka.framework.reporting.BaseHTMLReporter;
 import org.testng.Reporter;
 import org.testng.annotations.*;
 import org.testng.asserts.Assertion;
@@ -12,7 +12,8 @@ import java.util.List;
 @Listeners(BaseHTMLReporter.class)
 public abstract class BaseTest<D extends Device> {
     private D mDevice;
-    private final List<String> mProblemList = new ArrayList<String>();
+    private EventLogger mEventLogger = new EventLogger();
+
 
 
     //@Parameters({"platform","deviceName"})
@@ -36,7 +37,7 @@ public abstract class BaseTest<D extends Device> {
             logProblem(e.getMessage());
         }
 
-        if (mProblemList.size() > 0) {
+        if (mEventLogger.hasProblems()) {
             Assertion softAssert = new Assertion();
             softAssert.assertTrue(false);
         }
@@ -48,12 +49,11 @@ public abstract class BaseTest<D extends Device> {
     }
 
     protected void logProblem(String message) {
-        mProblemList.add(message);
-        Reporter.log(message);
+        mEventLogger.logProblem(message);
     }
 
     protected void logStep(String message) {
-        Reporter.log(message);
+        mEventLogger.logStep(message);
     }
 
     public D getDevice() {

@@ -1,12 +1,8 @@
 package com.tanushka.testweb;
 
-import com.tanushka.phonetest.BaseWebTest;
-import com.tanushka.phonetest.TestException;
-import com.tanushka.phonetest.ViewElement;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.Parameters;
+import com.tanushka.framework.platform.web.BaseWebTest;
+import com.tanushka.framework.platform.TestException;
+import com.tanushka.framework.platform.ViewElement;
 
 
 /**

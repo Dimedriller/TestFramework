@@ -1,5 +1,7 @@
-package com.tanushka.phonetest;
+package com.tanushka.framework.platform.android;
 
+import com.tanushka.framework.platform.TestException;
+import com.tanushka.framework.platform.ViewElement;
 import io.appium.java_client.MobileDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -19,7 +21,7 @@ public class AndroidViewElement implements ViewElement {
         mAndroidDriver = (AndroidDriver) webDriver;
     }
 
-    public ViewElement findElementByName(String name) throws TestException{
+    public ViewElement findElementByName(String name) throws TestException {
         try {
             AndroidElement element = (AndroidElement) mAndroidElement.findElement(By.name(name));
             return new AndroidViewElement(element);

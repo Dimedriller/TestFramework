@@ -1,14 +1,8 @@
-package com.tanushka.phonetest;
+package com.tanushka.framework.platform.web;
 
 
 
-import com.tanushka.reporting.BaseHTMLReporter;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
+import com.tanushka.framework.platform.BaseTest;
 
 import java.net.MalformedURLException;
 

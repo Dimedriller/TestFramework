@@ -1,8 +1,8 @@
 package com.tanushka.testweb;
 
-import com.tanushka.phonetest.BaseWebTest;
-import com.tanushka.phonetest.TestException;
-import com.tanushka.phonetest.ViewElement;
+import com.tanushka.framework.platform.web.BaseWebTest;
+import com.tanushka.framework.platform.TestException;
+import com.tanushka.framework.platform.ViewElement;
 
 
 /**

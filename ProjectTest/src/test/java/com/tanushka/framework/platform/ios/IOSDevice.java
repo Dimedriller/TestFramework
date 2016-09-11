@@ -1,4 +1,8 @@
-package com.tanushka.phonetest;
+package com.tanushka.framework.platform.ios;
+
+import com.tanushka.framework.platform.Device;
+import com.tanushka.framework.platform.TestException;
+import com.tanushka.framework.platform.ViewElement;
 
 import java.io.File;
 

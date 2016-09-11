@@ -1,4 +1,4 @@
-package com.tanushka.reporting;
+package com.tanushka.framework.reporting;
 
 import org.testng.ITestResult;
 import org.uncommons.reportng.ReportNGUtils;

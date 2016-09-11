@@ -1,8 +1,8 @@
 package com.tanushka.testsandroid.sanity;
 
-import com.tanushka.phonetest.BaseAndroidTest;
-import com.tanushka.phonetest.TestException;
-import com.tanushka.phonetest.ViewElement;
+import com.tanushka.framework.platform.android.BaseAndroidTest;
+import com.tanushka.framework.platform.TestException;
+import com.tanushka.framework.platform.ViewElement;
 
 /**
  * Created by Home on 02.06.2016.

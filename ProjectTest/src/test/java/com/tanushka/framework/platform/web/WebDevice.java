@@ -1,12 +1,10 @@
-package com.tanushka.phonetest;
+package com.tanushka.framework.platform.web;
 
+import com.tanushka.framework.platform.Device;
+import com.tanushka.framework.platform.TestException;
+import com.tanushka.framework.platform.ViewElement;
 import org.apache.commons.io.FileUtils;
-import org.junit.Assert;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxBinary;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -32,9 +30,9 @@ public class WebDevice implements Device {
         //mWebDriver = new ChromeDriver(); // Chrome
 
         //Internet Explorer
-        System.setProperty("webdriver.ie.driver", "C:\\Program Files (x86)\\Selenium\\IEDriverServer.exe");
-        System.setProperty("webdriver.ie.driver.loglevel", "TRACE");
-        System.setProperty("webdriver.ie.driver.logfile", "log\\selenium.log");
+        System.setProperty("webdriver.ie.framework", "C:\\Program Files (x86)\\Selenium\\IEDriverServer.exe");
+        System.setProperty("webdriver.ie.framework.loglevel", "TRACE");
+        System.setProperty("webdriver.ie.framework.logfile", "log\\selenium.log");
         DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
 
         ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);

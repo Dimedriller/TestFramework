@@ -1,4 +1,4 @@
-package com.tanushka.phonetest;
+package com.tanushka.framework.platform;
 
 public interface ViewElement {
     ViewElement findElementByName(String name) throws TestException;

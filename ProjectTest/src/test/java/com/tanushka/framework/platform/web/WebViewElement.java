@@ -1,5 +1,7 @@
-package com.tanushka.phonetest;
+package com.tanushka.framework.platform.web;
 
+import com.tanushka.framework.platform.TestException;
+import com.tanushka.framework.platform.ViewElement;
 import org.openqa.selenium.WebElement;
 
 /**
