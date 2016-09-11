@@ -18,7 +18,7 @@ import java.util.NoSuchElementException;
  * Created by Home on 31.07.2016.
  */
 public class WebDevice implements Device {
-    public final WebDriver mWebDriver;
+    private final WebDriver mWebDriver;
 
     public WebDevice() {
         /*File pathToBinary = new File("C:\\Program Files\\Mozilla Firefox\\Firefox.exe");
@@ -46,7 +46,6 @@ public class WebDevice implements Device {
     public void getScreenshot(String fileName) {
 
     }
-
 
     public ViewElement waitForElement(String id, long timeSeconds) throws TestException {
         return null;
@@ -140,5 +139,7 @@ public class WebDevice implements Device {
         }
     }
 
-
+    public void loadPage(String url) {
+        mWebDriver.get(url);
+    }
 }

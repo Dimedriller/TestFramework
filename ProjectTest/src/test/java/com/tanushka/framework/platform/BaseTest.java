@@ -12,9 +12,7 @@ import java.util.List;
 @Listeners(BaseHTMLReporter.class)
 public abstract class BaseTest<D extends Device> {
     private D mDevice;
-    private EventLogger mEventLogger = new EventLogger();
-
-
+    private final EventLogger mEventLogger = new EventLogger();
 
     //@Parameters({"platform","deviceName"})
 
@@ -58,6 +56,10 @@ public abstract class BaseTest<D extends Device> {
 
     public D getDevice() {
         return mDevice;
+    }
+
+    EventLogger getEventLogger() {
+        return mEventLogger;
     }
 
     protected abstract D initializeDevice() throws MalformedURLException;

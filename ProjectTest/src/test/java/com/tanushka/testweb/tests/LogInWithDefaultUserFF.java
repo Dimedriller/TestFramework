@@ -3,42 +3,21 @@ package com.tanushka.testweb.tests;
 import com.tanushka.framework.platform.web.BaseWebTest;
 import com.tanushka.framework.platform.TestException;
 import com.tanushka.framework.platform.ViewElement;
+import com.tanushka.testweb.helpers.LoginHelper;
 import com.tanushka.testweb.locators.LoginForm;
 
-
-/**
- * Created by Home on 31.07.2016.
- */
-
 public class LogInWithDefaultUserFF extends BaseWebTest{
+    private final LoginHelper mLoginHelper = new LoginHelper(this);
+
     @Override
     protected void executeSetup() {
-        String baseUrl = "http://demo.borland.com/InsuranceWebExtJS/index.jsf";
-        getDevice().mWebDriver.get(baseUrl);
+        getDevice().loadPage("http://demo.borland.com/InsuranceWebExtJS/index.jsf");
     }
 
     @Override
     protected void executeTest() throws TestException {
+        mLoginHelper.login(getDevice());
 
-        logStep("Step 1:Enter email john.smith@gmail.com in login-form:email<br>"+
-                "Expected Result: Email john.smith@gmail.com is introduced<br>");
-
-        ViewElement loginField = LoginForm.getUserName(getDevice());
-        loginField.sendKeys("john.smith@gmail.com");
-
-        logStep("Step 2:Enter password john in login-form:password<br>"+
-                "Expected Result: Password john is introduced<br>");
-
-        ViewElement passwordField = LoginForm.getPassword(getDevice());
-        passwordField.sendKeys("john");
-
-        logStep("Step 3:Click LogIn button<br>"+
-                "Expected Result: Notice Logged in as John Smith is displayed <br>");
-
-        ViewElement loginBtn = LoginForm.getLoginButton(getDevice());
-        loginBtn.click();
-
-        LoginForm.getLogoutName(getDevice(), "John");
 
       /*  try {
             getDevice().findElementById("logocont");

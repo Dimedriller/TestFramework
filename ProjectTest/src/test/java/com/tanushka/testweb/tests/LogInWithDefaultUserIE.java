@@ -12,11 +12,7 @@ import com.tanushka.framework.platform.ViewElement;
 public class LogInWithDefaultUserIE extends BaseWebTest{
     @Override
     protected void executeSetup() {
-
-
-        String baseUrl = "http://demo.borland.com/InsuranceWebExtJS/index.jsf";
-        getDevice().mWebDriver.get(baseUrl);
-
+        getDevice().loadPage("http://demo.borland.com/InsuranceWebExtJS/index.jsf");
     }
 
     @Override
