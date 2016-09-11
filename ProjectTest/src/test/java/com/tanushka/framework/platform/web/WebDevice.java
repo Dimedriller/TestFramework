@@ -5,6 +5,10 @@ import com.tanushka.framework.platform.TestException;
 import com.tanushka.framework.platform.ViewElement;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -20,23 +24,27 @@ import java.util.NoSuchElementException;
 public class WebDevice implements Device {
     private final WebDriver mWebDriver;
 
-    public WebDevice() {
-        /*File pathToBinary = new File("C:\\Program Files\\Mozilla Firefox\\Firefox.exe");
+    public WebDevice(String browser) {
+        if ("ie".equals(browser)) {
+            System.setProperty("webdriver.ie.framework", "C:\\Program Files (x86)\\Selenium\\IEDriverServer.exe");
+            System.setProperty("webdriver.ie.framework.loglevel", "TRACE");
+            System.setProperty("webdriver.ie.framework.logfile", "log\\selenium.log");
+            DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
+
+            ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
+            mWebDriver = new InternetExplorerDriver(ieCapabilities); // IE
+            return;
+        }
+
+        if ("chrome".equals(browser)) {
+            mWebDriver = new ChromeDriver();
+            return;
+        }
+
+        File pathToBinary = new File("C:\\Program Files\\Mozilla Firefox\\Firefox.exe");
         FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
         FirefoxProfile firefoxProfile = new FirefoxProfile();
-        mWebDriver = new FirefoxDriver(ffBinary,firefoxProfile);*/
-
-        //mWebDriver = new FirefoxDriver(); // FireFox
-        //mWebDriver = new ChromeDriver(); // Chrome
-
-        //Internet Explorer
-        System.setProperty("webdriver.ie.framework", "C:\\Program Files (x86)\\Selenium\\IEDriverServer.exe");
-        System.setProperty("webdriver.ie.framework.loglevel", "TRACE");
-        System.setProperty("webdriver.ie.framework.logfile", "log\\selenium.log");
-        DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
-
-        ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
-        mWebDriver = new InternetExplorerDriver(ieCapabilities); // IE
+        mWebDriver = new FirefoxDriver(ffBinary,firefoxProfile);
     }
 
     public void closeApp() {
