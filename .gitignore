@@ -1,4 +1,6 @@
 target
 *.png
 test-output
-ProjectTest/.idea/workspace.xml
+ProjectTest/.idea/
+ProjectTest.iml
+velocity.log

@@ -2,10 +2,7 @@ package com.tanushka.phonetest;
 
 import com.tanushka.reporting.BaseHTMLReporter;
 import org.testng.Reporter;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import org.testng.asserts.Assertion;
 
 import java.net.MalformedURLException;
@@ -16,6 +13,7 @@ import java.util.List;
 public abstract class BaseTest<D extends Device> {
     private D mDevice;
     private final List<String> mProblemList = new ArrayList<String>();
+
 
     //@Parameters({"platform","deviceName"})
 

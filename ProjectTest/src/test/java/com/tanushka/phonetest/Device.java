@@ -11,7 +11,7 @@ public interface Device {
 
     ViewElement waitForElement(String id, long timeSeconds) throws TestException;
     ViewElement findElementById(String id) throws TestException;
-    ViewElement findElementByXPath(String id) throws TestException;
+    ViewElement findElementByXPath(String xPath) throws TestException;
     ViewElement findElementByClassName(String className) throws TestException;
     ViewElement findElementByName (String name) throws TestException;
     ViewElement scrollForSpinnerByName(String name) throws TestException;

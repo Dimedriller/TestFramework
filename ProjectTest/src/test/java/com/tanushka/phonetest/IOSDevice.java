@@ -55,6 +55,14 @@ public class IOSDevice implements Device {
         return null;
     }
 
+    public void pinchAndZoom() throws TestException {
+
+    }
+
+    public void pinchAndZoomOut() throws TestException {
+
+    }
+
     public File takeScreenshot(String outputDir, String fileName) {
         return null;
     }

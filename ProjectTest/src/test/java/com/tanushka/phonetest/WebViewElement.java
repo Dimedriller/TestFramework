@@ -35,7 +35,7 @@ public class WebViewElement implements ViewElement {
 
     public void click() throws TestException {
         try {
-            mWebElement.submit();
+            mWebElement.click();
         } catch (Exception e) {
             throw new TestException(e.getMessage(),e);
         }
