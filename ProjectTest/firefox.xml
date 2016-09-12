@@ -11,10 +11,12 @@
         </classes>
     </test>
     <test name="LoginTest">
-        <parameter name="userName" value="john.smith@gmail.com" />
-        <parameter name="password" value="john" />
+        <parameter name="userName" value="sam@gmail.com" />
+        <parameter name="password" value="1234" />
+        <parameter name="userEmail" value="sam@gmail.com" />
         <classes>
             <class name="com.tanushka.testweb.tests.LoginWithUser" />
+            <class name="com.tanushka.testweb.tests.CreateNewUser" />
         </classes>
     </test>
 </suite>

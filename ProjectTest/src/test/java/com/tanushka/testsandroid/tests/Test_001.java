@@ -83,19 +83,13 @@ public class Test_001 extends BaseAndroidTest {
         logStep("Step 8: Close application by clicking Back button.<br>" +
                 "Expected Result: Application is closed.<br>");
 
-        //getPhone().back();
-       // getPhone().findElementById("com.taxaly.noteme.v2:id/actionbar_menu").click();
+
         device.back();
 
         device.findElementByClassName("android.widget.RelativeLayout");
-        //getPhone().findElementById("com.taxaly.noteme.v2:id/actionbar_toggle");
+
         relativeLayoutElement.findElementById("com.taxaly.noteme.v2:id/actionbar_toggle");
-       // getPhone().findElementById("com.taxaly.noteme.v2:id/actionbar_menu").click();
-        /*try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
+
 
 
         }

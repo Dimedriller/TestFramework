@@ -77,7 +77,7 @@ public class Test_005 extends BaseAndroidTest {
             e.printStackTrace();
         }
 
-        //getPhone().findElementByName("Fast folder");
+
 
         logStep("Step 5: Open Settings panel by swiping. And verify that Fast folder element is in the list.<br>" +
                 " Expected result: Fast folder element is present.<br>");

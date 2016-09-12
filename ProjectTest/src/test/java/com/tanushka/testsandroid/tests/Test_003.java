@@ -62,11 +62,9 @@ public class Test_003 extends BaseAndroidTest{
         logStep("Step 4: Long press on created note in the list.<br>" +
                 " Expected Result: Settings select_dialog_listview is displayed.<br>");
 
-        //ViewElement firstElement=getPhone().findElementByXPath("//android.widget.RelativeLayout[1]");
-        //getPhone().findElementByXPath("//android.widget.RelativeLayout[@index='2']").click();
+
         createdNote.longPress();
 
-        //getPhone().longPressByName("Hello Fast NotePad");
 
 
         logStep("Step 5: Verify all elements in select_dialog_listview.<br>" +
