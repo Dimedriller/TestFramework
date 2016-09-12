@@ -1,15 +1,23 @@
 package com.tanushka.testweb.tests;
 
-import com.tanushka.framework.platform.web.BaseWebTest;
 import com.tanushka.framework.platform.TestException;
-import com.tanushka.framework.platform.ViewElement;
+import com.tanushka.framework.platform.web.BaseWebTest;
 import com.tanushka.framework.platform.web.WebDevice;
 import com.tanushka.testweb.helpers.LoginHelper;
-import com.tanushka.testweb.locators.LoginForm;
 import org.testng.annotations.Parameters;
 
-public class LoginWithDefaultUser extends BaseWebTest{
+public class LoginWithUser extends BaseWebTest{
     private final LoginHelper mLoginHelper = new LoginHelper(this);
+
+    private final String mUserName;
+    private final String mPassword;
+
+    @Parameters({"userName", "password"})
+    public LoginWithUser(String userName, String password) {
+        mUserName = userName;
+        mPassword = password;
+    }
+
 
     @Override
     protected void executeSetup(WebDevice device) {
@@ -18,7 +26,7 @@ public class LoginWithDefaultUser extends BaseWebTest{
 
     @Override
     protected void executeTest(WebDevice device) throws TestException {
-        mLoginHelper.login(device, "john.smith@gmail.com", "john");
+        mLoginHelper.login(device, mUserName, mPassword);
 
     }
 }

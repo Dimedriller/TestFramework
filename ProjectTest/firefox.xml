@@ -2,14 +2,19 @@
 
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="All Tests" parallel="false">
+<suite name="Firefox Tests" parallel="false">
     <parameter name="browser" value="firefox" />
 
-    <test name="LoginTest">
+    <test name="DefaultLoginTest">
         <classes>
-            <class name="com.tanushka.testweb.tests.LogInWithDefaultUser" />
+            <class name="com.tanushka.testweb.tests.LoginWithDefaultUser" />
         </classes>
     </test>
-
-
+    <test name="LoginTest">
+        <parameter name="userName" value="john.smith@gmail.com" />
+        <parameter name="password" value="john" />
+        <classes>
+            <class name="com.tanushka.testweb.tests.LoginWithUser" />
+        </classes>
+    </test>
 </suite>
