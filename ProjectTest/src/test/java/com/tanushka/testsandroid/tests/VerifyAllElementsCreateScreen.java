@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 
 /**
  * Created by Home on 31.05.2016.
- * Test_002 Verify all elements in creation note screen.
+ * VerifyAllElementsCreateScreen Verify all elements in creation note screen.
  * Setup:
  *
  * Step 1: Open Fast Notepad. Click on content_addbtn. Find actionbar_toggle element.
@@ -26,7 +26,7 @@ import org.openqa.selenium.By;
  * Expected Result: Element scrollView is found".
  *
  */
-public class Test_002 extends BaseAndroidTest {
+public class VerifyAllElementsCreateScreen extends BaseAndroidTest {
     @Override
     protected void executeSetup(AndroidDevice device) {
 

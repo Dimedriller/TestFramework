@@ -5,18 +5,27 @@
 <suite name="Firefox Tests" parallel="false">
     <parameter name="browser" value="firefox" />
 
-    <test name="DefaultLoginTest">
+    <test name="DefaultLoginUserTest">
         <classes>
             <class name="com.tanushka.testweb.tests.LoginWithDefaultUser" />
         </classes>
     </test>
-    <test name="LoginTest">
-        <parameter name="userName" value="sam@gmail.com" />
+    <test name="CreateNewUserTest">
+        <parameter name="userName" value="01sam0@gmail.com" />
         <parameter name="password" value="1234" />
-        <parameter name="userEmail" value="sam@gmail.com" />
+        <parameter name="userEmail" value="01sam0@gmail.com" />
+        <classes>
+            <class name="com.tanushka.testweb.tests.CreateNewUser" />
+
+        </classes>
+    </test>
+    <test name="LoginWithUserTest">
+        <parameter name="userName" value="01sam0@gmail.com" />
+        <parameter name="password" value="1234" />
+        <parameter name="userEmail" value="01sam0@gmail.com" />
         <classes>
             <class name="com.tanushka.testweb.tests.LoginWithUser" />
-            <class name="com.tanushka.testweb.tests.CreateNewUser" />
+
         </classes>
     </test>
 </suite>

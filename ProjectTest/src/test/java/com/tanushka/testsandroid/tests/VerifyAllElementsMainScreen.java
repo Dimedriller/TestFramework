@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 
 /**
  * Created by Home on 31.05.2016.
- * Test_001 Verify all elements in the main screen.
+ * VerifyAllElementsMainScreen Verify all elements in the main screen.
  * Setup:
  *
  * Step 1: Open Fast Notepad. Find RelativeLayout widget.
@@ -36,7 +36,7 @@ import org.openqa.selenium.By;
  * Expected Result: Application is closed correctly.
  *
  */
-public class Test_001 extends BaseAndroidTest {
+public class VerifyAllElementsMainScreen extends BaseAndroidTest {
     @Override
     protected void executeSetup(AndroidDevice device) {
 

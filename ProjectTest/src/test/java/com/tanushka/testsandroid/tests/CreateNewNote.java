@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 
 /**
  * Created by Home on 31.05.2016.
- * Test_003 Create, Save and Delete a note.
+ * CreateNewNote Create, Save and Delete a note.
  *
  * Setup:
  *
@@ -31,7 +31,7 @@ import org.openqa.selenium.By;
  * Expected Result: The first note is deleted.
  *
  */
-public class Test_003 extends BaseAndroidTest{
+public class CreateNewNote extends BaseAndroidTest{
     @Override
     protected void executeSetup(AndroidDevice device) {
 

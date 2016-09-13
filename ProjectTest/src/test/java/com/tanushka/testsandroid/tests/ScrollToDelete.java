@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 
 /**
  * Created by Home on 02.06.2016.
- * Test_006 Create new 20 notes. Scroll to 5th and delete.
+ * ScrollToDelete Create new 20 notes. Scroll to 5th and delete.
  *
  * Setup:
  * Create 10 new notes.
@@ -19,7 +19,7 @@ import org.openqa.selenium.By;
  *
  */
 
-public class Test_006 extends BaseAndroidTest {
+public class ScrollToDelete extends BaseAndroidTest {
     @Override
     protected void executeSetup(AndroidDevice device) throws TestException {
         logStep("Setup: Create 10 new notes.<br>" +

@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 
 /**
  * Created by Home on 02.06.2016.
- * Test_004 Check Settings panel by swiping.
+ * ShippingPanel Check Settings panel by swiping.
  *
  * Setup:
  *
@@ -24,7 +24,7 @@ import org.openqa.selenium.By;
  *
  */
 
-public class Test_004 extends BaseAndroidTest {
+public class ShippingPanel extends BaseAndroidTest {
     @Override
     protected void executeSetup(AndroidDevice device) {
 

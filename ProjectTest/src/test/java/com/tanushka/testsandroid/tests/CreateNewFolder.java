@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 
 /**
  * Created by Home on 02.06.2016.
- * Test_005 Create new folder.
+ * CreateNewFolder Create new folder.
  *
  * Setup:
  *
@@ -29,7 +29,7 @@ import org.openqa.selenium.By;
  *
  */
 
-public class Test_005 extends BaseAndroidTest {
+public class CreateNewFolder extends BaseAndroidTest {
     @Override
     protected void executeSetup(AndroidDevice device) {
 
