@@ -1,5 +1,6 @@
 package com.tanushka.framework.platform.web;
 
+import com.google.common.base.Predicate;
 import com.tanushka.framework.platform.Device;
 import com.tanushka.framework.platform.TestException;
 import com.tanushka.framework.platform.ViewElement;
@@ -12,15 +13,15 @@ import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 import java.io.File;
 import java.io.IOException;
 import java.util.NoSuchElementException;
 
-/**
- * Created by Home on 31.07.2016.
- */
 public class WebDevice implements Device {
     private final WebDriver mWebDriver;
 
@@ -36,15 +37,15 @@ public class WebDevice implements Device {
             return;
         }
 
-        if ("chrome".equals(browser)) {
-            mWebDriver = new ChromeDriver();
+        if ("firefox".equals(browser)) {
+            File pathToBinary = new File("C:\\Program Files\\Mozilla Firefox\\Firefox.exe");
+            FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
+            FirefoxProfile firefoxProfile = new FirefoxProfile();
+            mWebDriver = new FirefoxDriver(ffBinary,firefoxProfile);
             return;
         }
 
-        File pathToBinary = new File("C:\\Program Files\\Mozilla Firefox\\Firefox.exe");
-        FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
-        FirefoxProfile firefoxProfile = new FirefoxProfile();
-        mWebDriver = new FirefoxDriver(ffBinary,firefoxProfile);
+        mWebDriver = new ChromeDriver();
     }
 
     public void closeApp() {
@@ -55,8 +56,52 @@ public class WebDevice implements Device {
 
     }
 
-    public ViewElement waitForElement(By by, long timeSeconds) throws TestException {
-        return null;
+    private <T> T waitFor(ExpectedCondition<T> condition, long timeSecs) {
+        return new WebDriverWait(mWebDriver, timeSecs).until(condition);
+    }
+
+    // Do not remove! For parametrized wait implementation
+    // Usage:
+    //    wait for specific element
+    //    WebElement datepicker = waitFor(presenceOfElementLocated(By.cssSelector("div#ui-datepicker-div")));
+    //
+    //    datepicker.findElement(By.cssSelector("td.ui-datepicker-today a")).click();
+    //
+    //    wait until meeting condition for that element
+    //    waitFor(datepicker, invisible());
+    private void waitFor(WebElement element, Predicate<WebElement> condition, long timeSecs) {
+        new WebElementWait(element, timeSecs).until(condition);
+    }
+
+    // Do not remove! For parametrized wait implementation
+    private static Predicate<WebElement> invisible() {
+        return new Predicate<WebElement>() {
+            public boolean apply(WebElement element) {
+                try {
+                    return !element.isDisplayed();
+                } catch (StaleElementReferenceException e) {
+                    return true;
+                }
+            }
+        };
+    }
+
+    private static Predicate<WebElement> any() {
+        return new Predicate<WebElement>() {
+            public boolean apply(WebElement element) {
+                return true;
+            }
+        };
+    }
+
+    public ViewElement waitForElement(By by, long timeSecs) throws TestException {
+        try {
+            ExpectedCondition<WebElement> expectedCondition = ExpectedConditions.presenceOfElementLocated(by);
+            WebElement webElement = waitFor(expectedCondition, timeSecs);
+            return new WebViewElement(webElement);
+        } catch (Exception e) {
+            throw new TestException(e.getMessage(), e);
+        }
     }
 
     public ViewElement findElement(By by) throws TestException {
