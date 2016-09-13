@@ -2,11 +2,9 @@ package com.tanushka.framework.platform.web;
 
 import com.tanushka.framework.platform.TestException;
 import com.tanushka.framework.platform.ViewElement;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-/**
- * Created by Home on 31.07.2016.
- */
 public class WebViewElement implements ViewElement {
 
     private final WebElement mWebElement;
@@ -19,15 +17,7 @@ public class WebViewElement implements ViewElement {
         //mWebDriver = (WebDriver) webDriver;
     }
 
-    public ViewElement findElementByName(String name) throws TestException {
-        return null;
-    }
-
-    public ViewElement findElementById(String id) throws TestException {
-        return null;
-    }
-
-    public ViewElement findElementByXPath(String xPath) throws TestException {
+    public ViewElement findElement(By by) throws TestException {
         return null;
     }
 

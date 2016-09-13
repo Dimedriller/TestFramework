@@ -4,6 +4,7 @@ import com.tanushka.framework.platform.android.AndroidDevice;
 import com.tanushka.framework.platform.android.BaseAndroidTest;
 import com.tanushka.framework.platform.TestException;
 import com.tanushka.framework.platform.ViewElement;
+import org.openqa.selenium.By;
 
 /**
  * Created by Home on 02.06.2016.
@@ -36,20 +37,20 @@ public class Test_004 extends BaseAndroidTest {
                 "Expected Result: Panel navigation_drawer is opened.<br>");
 
         device.swipeByCoordinates(2, 500, 700, 500);
-        ViewElement navigationDrawer = device.findElementById("com.taxaly.noteme.v2:id/navigation_drawer");
+        ViewElement navigationDrawer = device.findElement(By.id("com.taxaly.noteme.v2:id/navigation_drawer"));
 
         logStep("Step 2:Check all elements: Navigation_drawer element with text Fast NotePad, navigation_drawer_list with 4 elements:\n " +
                 "My notes, Trash bin, Settings, About.<br>" +
                 "Expected Result: All elements are present in the list.<br>");
 
-        navigationDrawer.findElementById("com.taxaly.noteme.v2:id/navigation_drawer_title").verifyTextAttribute("Fast Notepad");
-        navigationDrawer.findElementByName("Fast Notepad");
+        navigationDrawer.findElement(By.id("com.taxaly.noteme.v2:id/navigation_drawer_title")).verifyTextAttribute("Fast Notepad");
+        navigationDrawer.findElement(By.name("Fast Notepad"));
 
-        ViewElement navigationDRawerList = navigationDrawer.findElementById("com.taxaly.noteme.v2:id/navigation_drawer_list");
-        navigationDRawerList.findElementByName("My notes");
-        navigationDRawerList.findElementByName("Trash bin");
-        navigationDRawerList.findElementByName("Settings");
-        navigationDRawerList.findElementByName("About");
+        ViewElement navigationDRawerList = navigationDrawer.findElement(By.id("com.taxaly.noteme.v2:id/navigation_drawer_list"));
+        navigationDRawerList.findElement(By.name("My notes"));
+        navigationDRawerList.findElement(By.name("Trash bin"));
+        navigationDRawerList.findElement(By.name("Settings"));
+        navigationDRawerList.findElement(By.name("About"));
 
 
         logStep("Step 3: Close Settings panel by swiping.<br>" +
@@ -57,7 +58,7 @@ public class Test_004 extends BaseAndroidTest {
 
         device.swipeByCoordinates(700, 900, 50, 900);
         try {
-            device.findElementById("com.taxaly.noteme.v2:id/navigation_drawer");
+            device.findElement(By.id("com.taxaly.noteme.v2:id/navigation_drawer"));
             logProblem("Settings panel is not closed");
         } catch (TestException e) {
             // No actions

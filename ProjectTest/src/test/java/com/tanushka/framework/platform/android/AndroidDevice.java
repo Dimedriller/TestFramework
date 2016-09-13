@@ -26,9 +26,6 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * Created by Home on 15.02.2016.
- */
 public class AndroidDevice implements Device {
     protected final AndroidDriver mDriver;
 
@@ -65,82 +62,31 @@ public class AndroidDevice implements Device {
         }
     }
 
-    public ViewElement waitForElement(String id, long timeSeconds) throws TestException {
+    public ViewElement waitForElement(By by, long timeSeconds) throws TestException {
         try {
             WebDriverWait wait = new WebDriverWait(mDriver, timeSeconds);
-            AndroidElement element = (AndroidElement) wait.until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
+            AndroidElement element = (AndroidElement) wait.until(ExpectedConditions.presenceOfElementLocated(by));
             return new AndroidViewElement(element);
         } catch (TimeoutException e) {
-            throw new TestException("Timed out after " + timeSeconds + " seconds waiting for presence of element located by: By.id:" + id);
+            throw new TestException("Timed out after " + timeSeconds
+                    + " seconds waiting for presence of element located by: " + by);
         }
         catch (Exception e) {
             throw new TestException(e.getMessage(), e);
         }
     }
 
-    public ViewElement findElementById(String id) throws TestException {
+    public ViewElement findElement(By by) throws TestException {
         try {
-            WebElement webElement = mDriver.findElement(By.id(id));
+            WebElement webElement = mDriver.findElement(by);
             AndroidElement element = (AndroidElement) webElement;
             return new AndroidViewElement(element);
         } catch (NoSuchElementException e) {
-            throw new TestException("An element " + id + " could not be located on the page using the given search parameters");
+            throw new TestException("An element " + by
+                    + " could not be located on the page using the given search parameters");
         }
         catch (Exception e){
-            throw new TestException(e.getMessage(),e);
-        }
-    }
-
-    public ViewElement findElementByXPath(String xPath) throws TestException {
-        try {
-            By xpath = By.xpath(xPath);
-            AndroidElement element = (AndroidElement) mDriver.findElement(xpath);
-            return new AndroidViewElement(element);
-        }   catch (NoSuchElementException e) {
-            throw new TestException("An element " + xPath + " could not be located on the page using the given search parameters");
-        }
-        catch (Exception e){
-            throw new TestException(e.getMessage(),e);
-        }
-    }
-
-    public ViewElement findElementByClassName(String className) throws TestException {
-        try {
-            AndroidElement element = (AndroidElement) mDriver.findElement(By.className(className));
-            return new AndroidViewElement(element);
-        } catch (NoSuchElementException e) {
-            throw new TestException("An element " + className + " could not be located on the page using the given search parameters");
-        }
-        catch (Exception e){
-            throw new TestException(e.getMessage(),e);
-        }
-
-    }
-
-    public ViewElement findElementByName(String name) throws TestException {
-        try {
-
-            AndroidElement element = (AndroidElement) mDriver.findElement(By.name(name));
-            return new AndroidViewElement(element);
-        } catch (NoSuchElementException e) {
-            throw new TestException("An element " + name + " could not be located on the page using the given search parameters");
-        }
-        catch (Exception e){
-            throw new TestException(e.getMessage(),e);
-        }
-    }
-
-    public ViewElement scrollForSpinnerByName(String name) throws TestException {
-        try {
-
-            AndroidElement element = (AndroidElement) mDriver.scrollTo(name);
-            element.click();
-            return new AndroidViewElement(element);
-        } catch (NoSuchElementException e) {
-            throw new TestException("An element " + name + " could not be located on the page using the given search parameters");
-        }
-        catch (Exception e){
-            throw new TestException(e.getMessage(),e);
+            throw new TestException(e.getMessage(), e);
         }
     }
 
@@ -153,11 +99,15 @@ public class AndroidDevice implements Device {
         }
     }
 
-    public ViewElement scrollForElementById(String id)  throws TestException {
+    public ViewElement scrollForSpinnerByName(String name) throws TestException {
         try {
-            AndroidElement element = (AndroidElement) mDriver.scrollTo(id);
+            AndroidElement element = (AndroidElement) mDriver.scrollTo(name);
+            element.click();
             return new AndroidViewElement(element);
-        } catch (Exception e){
+        } catch (NoSuchElementException e) {
+            throw new TestException("An element " + name + " could not be located on the page using the given search parameters");
+        }
+        catch (Exception e){
             throw new TestException(e.getMessage(),e);
         }
     }
@@ -174,9 +124,9 @@ public class AndroidDevice implements Device {
         mDriver.sendKeyEvent(AndroidKeyCode.BACK);
     }
 
-    public Boolean isElementDisplayed(String id) throws TestException {
+    public Boolean isElementDisplayed(By by) throws TestException {
         try {
-            WebElement webElement = mDriver.findElement(By.id(id));
+            WebElement webElement = mDriver.findElement(by);
             AndroidElement element = (AndroidElement) webElement;
             return element.isDisplayed();
         } catch (Exception e){
@@ -214,7 +164,7 @@ public class AndroidDevice implements Device {
             multiTouch.perform();//	now	perform	both the actions simultaneously	(tAction0 and tAction1)
 
         } catch (Exception e){
-            throw new TestException(e.getMessage(),e);
+            throw new TestException(e.getMessage(), e);
         }
     }
 
@@ -231,19 +181,4 @@ public class AndroidDevice implements Device {
             return null;
         }
     }
-
-
-
-
-
-    /*public void verifyApplicationShown() throws TestException {
-
-        if(framework.findElements(By.className("android.widget.RelativeLayout")).size() != 0)
-            throw new TestException("An applicaton is not closed.");
-
-    }*/
-
-
-
-
 }

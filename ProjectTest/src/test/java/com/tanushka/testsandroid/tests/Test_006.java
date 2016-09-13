@@ -4,6 +4,7 @@ import com.tanushka.framework.platform.android.AndroidDevice;
 import com.tanushka.framework.platform.android.BaseAndroidTest;
 import com.tanushka.framework.platform.TestException;
 import com.tanushka.framework.platform.ViewElement;
+import org.openqa.selenium.By;
 
 /**
  * Created by Home on 02.06.2016.
@@ -25,14 +26,14 @@ public class Test_006 extends BaseAndroidTest {
                 " Expected result: 20 new notes are created.<br>");
 
         for(int size = 0; size < 10; size++) {
-            device.findElementById("com.taxaly.noteme.v2:id/content_addbtn").click();
-            device.findElementByName("Fast Notepad");
-            ViewElement editorElement = device.findElementById("com.taxaly.noteme.v2:id/scrollView");
+            device.findElement(By.id("com.taxaly.noteme.v2:id/content_addbtn")).click();
+            device.findElement(By.name("Fast Notepad"));
+            ViewElement editorElement = device.findElement(By.id("com.taxaly.noteme.v2:id/scrollView"));
             editorElement.sendKeys("Fast NotePad" + size);
 
-            device.findElementById("com.taxaly.noteme.v2:id/actionbar_back").click();
-            ViewElement listView = device.findElementById("com.taxaly.noteme.v2:id/fragment_main_list");
-            listView.findElementByName("Fast NotePad"+size);
+            device.findElement(By.id("com.taxaly.noteme.v2:id/actionbar_back")).click();
+            ViewElement listView = device.findElement(By.id("com.taxaly.noteme.v2:id/fragment_main_list"));
+            listView.findElement(By.name("Fast NotePad"+size));
         }
     }
 
@@ -44,10 +45,10 @@ public class Test_006 extends BaseAndroidTest {
 
         ViewElement createdNote = device.scrollForElementByName("Fast NotePad5");
         createdNote.longPress();
-        ViewElement selectDialogListView = device.findElementById("android:id/select_dialog_listview");
-        selectDialogListView.findElementByName("Delete").click();
+        ViewElement selectDialogListView = device.findElement(By.id("android:id/select_dialog_listview"));
+        selectDialogListView.findElement(By.name("Delete")).click();
         try {
-            createdNote.findElementByName("Fast NotePad5");
+            createdNote.findElement(By.name("Fast NotePad5"));
             logProblem("Fast NotePad5 is not deleted");
         } catch (TestException e) {
             // No actions

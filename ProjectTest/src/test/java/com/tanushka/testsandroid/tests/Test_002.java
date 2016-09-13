@@ -3,6 +3,7 @@ package com.tanushka.testsandroid.tests;
 import com.tanushka.framework.platform.android.AndroidDevice;
 import com.tanushka.framework.platform.android.BaseAndroidTest;
 import com.tanushka.framework.platform.TestException;
+import org.openqa.selenium.By;
 
 /**
  * Created by Home on 31.05.2016.
@@ -37,27 +38,27 @@ public class Test_002 extends BaseAndroidTest {
         logStep("Step 1: Open Fast Notepad. Click on content_addbtn. Find actionbar_toggle element.<br>" +
                 "Expected Result: Creation note screen with Fast Notepad title is opened.<br>");
 
-        device.findElementById("com.taxaly.noteme.v2:id/content_addbtn").click();
-        device.findElementByName("Fast Notepad");
+        device.findElement(By.id("com.taxaly.noteme.v2:id/content_addbtn")).click();
+        device.findElement(By.name("Fast Notepad"));
 
         logStep("Step 2: Find actionbar_back element.<br>" +
                 "Expected Result: Element actionbar_back is found.<br>");
 
-        device.findElementById("com.taxaly.noteme.v2:id/actionbar_back");
+        device.findElement(By.id("com.taxaly.noteme.v2:id/actionbar_back"));
 
         logStep("Step 3: Find actionbar_share element.<br>" +
                 "Expected Result: Element actionbar_share is found.<br>");
 
-        device.findElementById("com.taxaly.noteme.v2:id/actionbar_share");
+        device.findElement(By.id("com.taxaly.noteme.v2:id/actionbar_share"));
 
         logStep("Step 4: Find actionbar_menu element.<br>" +
                 "Expected Result: Element actionbar_menu is found.<br>");
 
-        device.findElementById("com.taxaly.noteme.v2:id/actionbar_menu");
+        device.findElement(By.id("com.taxaly.noteme.v2:id/actionbar_menu"));
 
         logStep("Step 5: Find scrollView element.<br>" +
                 "Expected Result: Element scrollView is found.<br>");
 
-        device.findElementById("com.taxaly.noteme.v2:id/scrollView");
+        device.findElement(By.id("com.taxaly.noteme.v2:id/scrollView"));
     }
 }

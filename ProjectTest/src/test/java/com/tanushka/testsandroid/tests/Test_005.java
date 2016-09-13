@@ -4,6 +4,7 @@ import com.tanushka.framework.platform.android.AndroidDevice;
 import com.tanushka.framework.platform.android.BaseAndroidTest;
 import com.tanushka.framework.platform.TestException;
 import com.tanushka.framework.platform.ViewElement;
+import org.openqa.selenium.By;
 
 /**
  * Created by Home on 02.06.2016.
@@ -40,36 +41,36 @@ public class Test_005 extends BaseAndroidTest {
         logStep("Step 1: Open NotePad. Click on actionbar_menu.<br>" +
                 " Expected result: Dialog with actions are displayed.<br>");
 
-        device.findElementById("com.taxaly.noteme.v2:id/actionbar_menu").click();
-        ViewElement dialogListView = device.findElementById("android:id/select_dialog_listview");
+        device.findElement(By.id("com.taxaly.noteme.v2:id/actionbar_menu")).click();
+        ViewElement dialogListView = device.findElement(By.id("android:id/select_dialog_listview"));
 
         logStep("Step 2: Verify all element in dialog: Order by date, Order by title, Create folder. And Cancel button.<br>" +
                 " Expected result: All elements are present in the dialog.<br>");
 
-        dialogListView.findElementByName("Order by date");
-        dialogListView.findElementByName("Order by title");
-        dialogListView.findElementByName("Create folder");
+        dialogListView.findElement(By.name("Order by date"));
+        dialogListView.findElement(By.name("Order by title"));
+        dialogListView.findElement(By.name("Create folder"));
 
-        device.findElementById("android:id/button3");
+        device.findElement(By.id("android:id/button3"));
 
         logStep("Step 3: Click Create folder.<br>" +
                 " Expected result: Dialog for create a new folder is displayed.<br>");
 
-        dialogListView.findElementByName("Create folder").click();
+        dialogListView.findElement(By.name("Create folder")).click();
 
 
         //Check all elements in Create dialog
-        ViewElement nameFolderField = device.findElementByName("Enter folder name");
-        device.findElementByName("Fast folder");
+        ViewElement nameFolderField = device.findElement(By.name("Enter folder name"));
+        device.findElement(By.name("Fast folder"));
 
-        device.findElementByName("Cancel");
-        device.findElementByName("OK");
+        device.findElement(By.name("Cancel"));
+        device.findElement(By.name("OK"));
 
         logStep("Step 4: Print Test. Click OK.<br>" +
                 " Expected result: Folder is created.<br>");
 
         nameFolderField.sendKeys("Test");
-        device.findElementByName("OK").click();
+        device.findElement(By.name("OK")).click();
 
         try {
             Thread.sleep(1000);
@@ -83,9 +84,9 @@ public class Test_005 extends BaseAndroidTest {
                 " Expected result: Fast folder element is present.<br>");
 
         device.swipeByCoordinates(2, 500, 700, 500);
-        ViewElement navigationDrawer = device.findElementById("com.taxaly.noteme.v2:id/navigation_drawer");
+        ViewElement navigationDrawer = device.findElement(By.id("com.taxaly.noteme.v2:id/navigation_drawer"));
 
-        navigationDrawer.findElementByName("Test").click();
-        device.findElementByName("Test");
+        navigationDrawer.findElement(By.name("Test")).click();
+        device.findElement(By.name("Test"));
     }
 }

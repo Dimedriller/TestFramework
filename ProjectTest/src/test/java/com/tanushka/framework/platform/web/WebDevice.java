@@ -55,59 +55,28 @@ public class WebDevice implements Device {
 
     }
 
-    public ViewElement waitForElement(String id, long timeSeconds) throws TestException {
+    public ViewElement waitForElement(By by, long timeSeconds) throws TestException {
         return null;
     }
 
-    public ViewElement findElementById(String id) throws TestException {
+    public ViewElement findElement(By by) throws TestException {
         try {
-            WebElement element = mWebDriver.findElement(By.id(id));
+            WebElement element = mWebDriver.findElement(by);
             return new WebViewElement(element);
         } catch (NoSuchElementException e) {
-            throw new TestException("An element " + id + " could not be located on the page using the given search parameters");
+            throw new TestException("An element " + by
+                    + " could not be located on the page using the given search parameters");
         }
         catch (Exception e){
             throw new TestException(e.getMessage(),e);
         }
-    }
-
-    public ViewElement findElementByXPath(String xPath) throws TestException {
-        try {
-            WebElement element = mWebDriver.findElement(By.xpath(xPath));
-            return new WebViewElement(element);
-        } catch (NoSuchElementException e) {
-            throw new TestException("An element " + xPath + " could not be located on the page using the given search parameters");
-        }
-        catch (Exception e){
-            throw new TestException(e.getMessage(),e);
-        }
-    }
-
-    public ViewElement findElementByClassName(String className) throws TestException {
-        return null;
-    }
-
-    public ViewElement findElementByName(String name) throws TestException {
-        try {
-            WebElement element = mWebDriver.findElement(By.name(name));
-            return new WebViewElement(element);
-        } catch (NoSuchElementException e) {
-            throw new TestException("An element " + name + " could not be located on the page using the given search parameters");
-        }
-        catch (Exception e){
-            throw new TestException(e.getMessage(),e);
-        }
-    }
-
-    public ViewElement scrollForSpinnerByName(String name) throws TestException {
-        return null;
-    }
-
-    public ViewElement scrollForElementById(String id) throws TestException {
-        return null;
     }
 
     public ViewElement scrollForElementByName(String name) throws TestException {
+        return null;
+    }
+
+    public ViewElement scrollForSpinnerByName(String name) throws TestException {
         return null;
     }
 
@@ -119,7 +88,7 @@ public class WebDevice implements Device {
 
     }
 
-    public Boolean isElementDisplayed(String id) throws TestException {
+    public Boolean isElementDisplayed(By by) throws TestException {
         return null;
     }
 

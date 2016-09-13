@@ -21,43 +21,17 @@ public class AndroidViewElement implements ViewElement {
         mAndroidDriver = (AndroidDriver) webDriver;
     }
 
-    public ViewElement findElementByName(String name) throws TestException {
+    public ViewElement findElement(By by) throws TestException {
         try {
-            AndroidElement element = (AndroidElement) mAndroidElement.findElement(By.name(name));
+            AndroidElement element = (AndroidElement) mAndroidElement.findElement(by);
             return new AndroidViewElement(element);
         }   catch (NoSuchElementException e) {
-                throw new TestException("An element " + name + " could not be located on the page using the given search parameters");
+                throw new TestException("An element " + by + " could not be located on the page using the given search parameters");
             }
             catch (Exception e){
                 throw new TestException(e.getMessage(),e);
             }
     }
-
-    public ViewElement findElementById(String id) throws TestException{
-        try {
-            AndroidElement element = (AndroidElement) mAndroidElement.findElement(By.id(id));
-            return new AndroidViewElement(element);
-        }   catch (NoSuchElementException e) {
-            throw new TestException("An element " + id + " could not be located on the page using the given search parameters");
-        }
-        catch (Exception e){
-            throw new TestException(e.getMessage(),e);
-        }
-    }
-
-    public ViewElement findElementByXPath(String xPath) throws TestException {
-        try {
-            By xpath = By.xpath(xPath);
-            AndroidElement element = (AndroidElement) mAndroidElement.findElement(xpath);
-                return new AndroidViewElement(element);
-            }   catch (NoSuchElementException e) {
-                throw new TestException("An element " + xPath + " could not be located on the page using the given search parameters");
-            }
-            catch (Exception e){
-                throw new TestException(e.getMessage(),e);
-            }
-    }
-
 
     /*public ViewElement findLastElement(String xPath) throws TestException {
         try {
@@ -106,8 +80,6 @@ public class AndroidViewElement implements ViewElement {
     public void scrollTo(String lookUpText) throws TestException {
 
     }
-
-
 
     public void verifyTextAttribute(String text) throws TestException {
         try {

@@ -4,6 +4,7 @@ import com.tanushka.framework.platform.android.AndroidDevice;
 import com.tanushka.framework.platform.android.BaseAndroidTest;
 import com.tanushka.framework.platform.TestException;
 import com.tanushka.framework.platform.ViewElement;
+import org.openqa.selenium.By;
 
 /**
  * Created by Home on 31.05.2016.
@@ -42,22 +43,22 @@ public class Test_003 extends BaseAndroidTest{
         logStep("Step 1: Open Fast Notepad. Click on content_addbtn. Find actionbar_toggle element.<br>" +
                 "Expected Result: Creation note screen with Fast Notepad title is opened.<br>");
 
-        device.findElementById("com.taxaly.noteme.v2:id/content_addbtn").click();
-        device.findElementByName("Fast Notepad");
+        device.findElement(By.id("com.taxaly.noteme.v2:id/content_addbtn")).click();
+        device.findElement(By.name("Fast Notepad"));
 
         logStep("Step 2: Print Hello Fast NotePad. <br>" +
                 "Expected Result: Element editor has text Hello Fast NotePad.<br>");
 
-        ViewElement editorElement= device.findElementById("com.taxaly.noteme.v2:id/scrollView");
+        ViewElement editorElement= device.findElement(By.id("com.taxaly.noteme.v2:id/scrollView"));
         editorElement.sendKeys("Hello Fast NotePad");
-        editorElement.findElementByName("Hello Fast NotePad");
+        editorElement.findElement(By.name("Hello Fast NotePad"));
 
         logStep("Step 3: Click on actionbar_back element. <br>" +
                 "Expected Result: A new note is saved.<br>");
 
-        device.findElementById("com.taxaly.noteme.v2:id/actionbar_back").click();
-        ViewElement listView = device.findElementById("com.taxaly.noteme.v2:id/fragment_main_list");
-        ViewElement createdNote = listView.findElementByName("Hello Fast NotePad");
+        device.findElement(By.id("com.taxaly.noteme.v2:id/actionbar_back")).click();
+        ViewElement listView = device.findElement(By.id("com.taxaly.noteme.v2:id/fragment_main_list"));
+        ViewElement createdNote = listView.findElement(By.name("Hello Fast NotePad"));
 
         logStep("Step 4: Long press on created note in the list.<br>" +
                 " Expected Result: Settings select_dialog_listview is displayed.<br>");
@@ -70,18 +71,18 @@ public class Test_003 extends BaseAndroidTest{
         logStep("Step 5: Verify all elements in select_dialog_listview.<br>" +
                 "Expected Result: Open, Clone, Delete, Move to are present. Cancel is present.<br>");
 
-        ViewElement selectDialogListview = device.findElementById("android:id/select_dialog_listview");
-        selectDialogListview.findElementByName("Open");
-        selectDialogListview.findElementByName("Clone");
-        selectDialogListview.findElementByName("Delete");
-        selectDialogListview.findElementByName("Move to");
+        ViewElement selectDialogListview = device.findElement(By.id("android:id/select_dialog_listview"));
+        selectDialogListview.findElement(By.name("Open"));
+        selectDialogListview.findElement(By.name("Clone"));
+        selectDialogListview.findElement(By.name("Delete"));
+        selectDialogListview.findElement(By.name("Move to"));
 
-        device.findElementByName("Cancel");
+        device.findElement(By.name("Cancel"));
 
         logStep("Step 6: Click Delete.<br>" +
                 "Expected Result: The first note is deleted.<br>");
 
-        selectDialogListview.findElementByName("Delete").click();
+        selectDialogListview.findElement(By.name("Delete")).click();
 
 
     }

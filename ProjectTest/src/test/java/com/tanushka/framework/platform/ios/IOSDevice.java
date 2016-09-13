@@ -3,6 +3,7 @@ package com.tanushka.framework.platform.ios;
 import com.tanushka.framework.platform.Device;
 import com.tanushka.framework.platform.TestException;
 import com.tanushka.framework.platform.ViewElement;
+import org.openqa.selenium.By;
 
 import java.io.File;
 
@@ -15,35 +16,19 @@ public class IOSDevice implements Device {
 
     }
 
-    public ViewElement waitForElement(String id, long timeSeconds) throws TestException {
+    public ViewElement waitForElement(By by, long timeSeconds) throws TestException {
         return null;
     }
 
-    public ViewElement findElementById(String id) throws TestException {
-        return null;
-    }
-
-    public ViewElement findElementByXPath(String id) throws TestException {
-        return null;
-    }
-
-    public ViewElement findElementByClassName(String className) throws TestException {
-        return null;
-    }
-
-    public ViewElement findElementByName(String name) throws TestException {
-        return null;
-    }
-
-    public ViewElement scrollForSpinnerByName(String name) throws TestException {
-        return null;
-    }
-
-    public ViewElement scrollForElementById(String id) throws TestException {
+    public ViewElement findElement(By by) throws TestException {
         return null;
     }
 
     public ViewElement scrollForElementByName(String name) throws TestException {
+        return null;
+    }
+
+    public ViewElement scrollForSpinnerByName(String name) throws TestException {
         return null;
     }
 
@@ -55,7 +40,7 @@ public class IOSDevice implements Device {
 
     }
 
-    public Boolean isElementDisplayed(String id) throws TestException {
+    public Boolean isElementDisplayed(By by) throws TestException {
         return null;
     }
 
