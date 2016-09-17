@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Android Tests" parallel="false">
+    <parameter name="appPath" value="C:\Projects\ProjectTest\app\Fast Notepad.apk" />
+    <parameter name="deviceID" value="42f7fb273d8eafab" />
+
+    <test name="Sanity Test">
+        <classes>
+            <class name="com.tanushka.testandroid.tests.CreateNewFolder" />
+            <class name="com.tanushka.testandroid.tests.CreateNewNote" />
+            <class name="com.tanushka.testandroid.tests.ScrollToDelete" />
+            <class name="com.tanushka.testandroid.tests.ShippingPanel" />
+            <class name="com.tanushka.testandroid.tests.VerifyAllElementsCreateScreen" />
+            <class name="com.tanushka.testandroid.tests.VerifyAllElementsMainScreen" />
+        </classes>
+    </test>
+</suite>

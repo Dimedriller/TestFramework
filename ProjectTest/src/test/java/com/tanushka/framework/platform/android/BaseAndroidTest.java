@@ -7,7 +7,8 @@ import java.util.Map;
 
 public abstract class BaseAndroidTest extends BaseTest<AndroidDevice> {
     protected AndroidDevice initializeDevice(Map<String, String> params) throws MalformedURLException {
-        return new AndroidDevice();
+        String appPath = params.get("appPath");
+        String deviceID = params.get("deviceID");
+        return new AndroidDevice(appPath, deviceID);
     }
-
 }

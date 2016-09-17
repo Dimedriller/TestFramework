@@ -29,22 +29,18 @@ import java.net.URL;
 public class AndroidDevice implements Device {
     protected final AndroidDriver mDriver;
 
-    public AndroidDevice() throws MalformedURLException {
-        File appDir = new File("C:\\Projects\\ProjectTest\\app\\");
-        File app = new File(appDir, "Fast Notepad.apk");
+    public AndroidDevice(String appPath, String deviceID) throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("device","Android");
-
         //not reinstall the app
         capabilities.setCapability("fullReset",false);
         capabilities.setCapability("noReset",true);
-
         //mandatory capabilities
-        capabilities.setCapability("deviceName","235dbb91");
+        capabilities.setCapability("deviceName", deviceID);
         capabilities.setCapability("platformName","Android");
-
         //other caps
-        capabilities.setCapability("app", app.getAbsolutePath());
+        capabilities.setCapability("app", appPath);
+
         mDriver =  new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
     }
 

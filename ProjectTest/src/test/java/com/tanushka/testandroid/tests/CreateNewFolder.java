@@ -1,4 +1,4 @@
-package com.tanushka.testsandroid.tests;
+package com.tanushka.testandroid.tests;
 
 import com.tanushka.framework.platform.android.AndroidDevice;
 import com.tanushka.framework.platform.android.BaseAndroidTest;
